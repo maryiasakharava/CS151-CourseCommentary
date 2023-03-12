@@ -1,1 +1,1 @@
-# CS151-Team9
+# CS151-RateMyCourse
