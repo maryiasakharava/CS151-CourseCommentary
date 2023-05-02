@@ -41,7 +41,7 @@ public class Login extends JFrame implements ActionListener {
 
         topPanel();
 
-        i = new ImageIcon("Images/My project-1 (2).png");
+        i = new ImageIcon("My project-1 (2).png");
         Image i1 = i.getImage();
         bi = new BufferedImage(i1.getWidth(null),i1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         g = bi.createGraphics();

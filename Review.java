@@ -15,7 +15,7 @@ public class Review extends JFrame implements ActionListener  {
 
   JPanel panel;
   Dimension screenSize;
-  JLabel title, label, label2, label3;
+  JLabel title, label, label2, label3, courseDIff, takeAgain;
 
 
   JTextField course;
@@ -26,6 +26,8 @@ public class Review extends JFrame implements ActionListener  {
   JMenu men;
   JButton submit;
   HashMap<String, String> h;
+  String s, s1;
+  JRadioButton j1, j2;
 
   JColorChooser c, c1;
   Font f, f1;
@@ -64,10 +66,12 @@ public class Review extends JFrame implements ActionListener  {
 
     //set the password and store all user info into an array; all of this will be put into the hashmap and written into the file
     String c = new String(course.getText());
-    String[] a = new String[3];
+    String[] a = new String[5];
     a[0] = course.getText();
     a[1] = prof.getText();
     a[2] = review.getText();
+    a[3] = s;
+    a[4] = s1;
     h.put(course.getText(), Arrays.toString(a));
     //read into the file
     try {
@@ -162,7 +166,7 @@ public class Review extends JFrame implements ActionListener  {
 
     label3 = new JLabel("Review:  ");
     label3.setFont(f1);
-    label3.setBounds(140, 150, 200, 30);
+    label3.setBounds(140, 230, 200, 30);
     label3.setForeground(c.getColor());
     panel.add(label3);
 
@@ -176,23 +180,123 @@ public class Review extends JFrame implements ActionListener  {
     prof.setHorizontalAlignment(JLabel.CENTER);
     panel.add(prof);
 
-    review = new JTextArea();
-    review.setLineWrap(true);
-    review.setBounds(360, 150, 200, 100);
-    panel.add(review);
+
+    courseDIff = new JLabel("Course Difficulty:  ");
+    courseDIff.setFont(f1);
+    courseDIff.setBounds(140, 150, 200, 30);
+    courseDIff.setForeground(c.getColor());
+    panel.add(courseDIff);
+
+    takeAgain = new JLabel("Would take again:  ");
+    takeAgain.setFont(f1);
+    takeAgain.setBounds(140, 190, 200, 30);
+    takeAgain.setForeground(c.getColor());
+    panel.add(takeAgain);
 
     jb = new JMenuBar();
-    men = new JMenu("Course Difficulty");
-    men.add(new JMenuItem("Easy"));
-    men.add(new JMenuItem("Medium"));
-    men.add(new JMenuItem("Hard"));
+    jb.setBounds(360, 150, 200, 30);
+
+    men = new JMenu("Rate on scale from 1 to 10");
+    JMenuItem item1 = new JMenuItem("1");
+    men.add(item1);
+    JMenuItem item2 = new JMenuItem("2");
+    men.add(item2);
+    JMenuItem item3 = new JMenuItem("3");
+    men.add(item3);
+    JMenuItem item4 = new JMenuItem("4");
+    men.add(item4);
+    JMenuItem item5 = new JMenuItem("5");
+    men.add(item5);
+    JMenuItem item6 = new JMenuItem("6");
+    men.add(item6);
+    JMenuItem item7 = new JMenuItem("7");
+    men.add(item7);
+    JMenuItem item8 = new JMenuItem("8");
+    men.add(item8);
+    JMenuItem item9 = new JMenuItem("9");
+    men.add(item9);
+    JMenuItem item10 = new JMenuItem("10");
+    men.add(item10);
+    item1.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item1.getText();
+      }
+    });
+    item2.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item2.getText();
+      }
+    });
+    item3.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item3.getText();
+      }
+    });
+    item4.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item4.getText();
+
+      }
+    });
+    item5.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item5.getText();
+      }
+    });
+    item6.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item6.getText();      }
+    });
+    item7.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item7.getText();      }
+    });
+    item8.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item8.getText();      }
+    });
+    item9.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item9.getText();      }
+    });
+    item10.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s = item10.getText();      }
+    });
+
     jb.add(men);
-    jb.setBounds(360, 260, 150, 30);
+    // jb.setBounds(360, 260, 150, 30);
     panel.add(jb);
     jb.setVisible(true);
 
+    j1 = new JRadioButton("Yes");
+    j1.setText("Yes");
+    j1.setBounds(360,190,60,30 );
+    j1.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s1 = j1.getText();      }
+    });
+    j2 = new JRadioButton("No");
+    j2.setText("No");
+    j2.setBounds(430,190,60,30 );
+    j2.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s1 = j1.getText();      }
+    });
+    ButtonGroup bg = new ButtonGroup();
+    bg.add(j1);
+    bg.add(j2);
+    panel.add(j1);
+    panel.add(j2);
+
+    review = new JTextArea();
+    review.setLineWrap(true);
+    review.setBounds(360, 230, 200, 100);
+    panel.add(review);
+
+
     submit = new JButton("Submit Review");
-    submit.setBounds(360, 330, 150, 30);
+    submit.setBounds(360, 360, 150, 30);
     submit.addActionListener(this);
     panel.add(submit);
 
