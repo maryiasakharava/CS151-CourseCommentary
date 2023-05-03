@@ -107,7 +107,8 @@ public class Review extends JFrame implements ActionListener  {
 
         // put key and value separated by a colon
         bf.append(entry.getKey() + ":"
-                + entry.getValue());
+                + entry.getValue().substring(1,entry.getValue().length()-1));
+
 
         // new line
         bf.newLine();
@@ -128,8 +129,9 @@ public class Review extends JFrame implements ActionListener  {
       } catch (Exception e) {
       }
     }
-   // CourseCommentary c = new CourseCommentary();
-   // this.dispose();
+    // CourseCommentary c = new CourseCommentary();
+    // this.dispose();
+
     //to set this as the default close operation it needs to return an int
     return 1;
   }
@@ -307,8 +309,9 @@ public class Review extends JFrame implements ActionListener  {
     back.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-            dispose();
-            CourseCommentaryLoggedIn c = new CourseCommentaryLoggedIn();
+        dispose();
+        CourseCommentaryLoggedIn c = new CourseCommentaryLoggedIn();
+
       }
     });
 

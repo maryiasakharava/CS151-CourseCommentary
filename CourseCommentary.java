@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.print.PrinterException;
+
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -123,6 +125,18 @@ public class CourseCommentary extends JFrame  {
         icon.setBounds(0, 200, 800, 400);
         centerPanel.add(icon);
         add(centerPanel);
+
+        searchButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                try {
+                    ReviewDisplay rd = new ReviewDisplay(searchBar.getText());
+                } catch (PrinterException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+
 
 
     }

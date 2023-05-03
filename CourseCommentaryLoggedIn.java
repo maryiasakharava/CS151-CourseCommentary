@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.awt.print.PrinterException;
 import java.io.IOException;
 
 public class CourseCommentaryLoggedIn extends JFrame{
@@ -102,6 +103,17 @@ public class CourseCommentaryLoggedIn extends JFrame{
         JButton searchButton = new JButton("Search");
         searchButton.setBounds(600, 50, 150, 25);
         centerPanel.add(searchButton);
+
+        searchButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                try {
+                    ReviewDisplayLoggedIn rd = new ReviewDisplayLoggedIn(searchBar.getText());
+                } catch (PrinterException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         JLabel icon = new JLabel(newIcon);
         icon.setBounds(0, 200, 800, 400);

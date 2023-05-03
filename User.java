@@ -1,4 +1,6 @@
-public abstract class User {
+
+public class User {
+
     public void lookUpCourse(String course){
 
     }
