@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.print.PrinterException;
+
 import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -135,6 +136,7 @@ public class CourseCommentary extends JFrame  {
                 }
             }
         });
+
 
 
     }

@@ -3,3 +3,4 @@ CS 146:CS 146, Bob Joe, This class helped me with interviews. , 9, Yes
 CS 151:CS 151, Jane Doe, I liked this professor and she was very nice. , 10, Yes
 CS 151:CS 151, Jane Doe, I liked this class. , 10, Yes
 CS 151:CS 151, Jo Doe, Hard class but good information. , 7, Yes
+
