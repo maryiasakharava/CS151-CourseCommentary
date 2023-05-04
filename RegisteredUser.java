@@ -52,12 +52,6 @@ public class RegisteredUser extends User {
     public void writeReview(){
 
     }
-    public void deleteReview(){
-
-    }
-    public void seeMyReviews(){
-
-    }
 
 
 }

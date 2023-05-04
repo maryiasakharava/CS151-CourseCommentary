@@ -110,7 +110,7 @@ public class ReviewDisplay extends JFrame {
         model.addColumn("Course");
         model.addColumn("Professor");
         model.addColumn("Review");
-        model.addColumn("Rating");
+        model.addColumn("Rating (1-10)");
         model.addColumn("Would Take Again");
         model.addColumn("Textbook Required");
 

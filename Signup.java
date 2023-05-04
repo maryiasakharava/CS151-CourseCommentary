@@ -155,6 +155,8 @@ public class Signup extends JFrame implements ActionListener {
                 a[1] = field1.getText() + " " + field2.getText();
                 a[2] = field3.getText();
                 h.put(field3.getText(), Arrays.toString(a));
+                user = new RegisteredUser(field1.getText(),field2.getText(),field3.getText(),pass);
+
                 //read into the file
                 try {
                     readIntoFile();
