@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-  <h1>Course Commentary Project Report</h1><title>Course Commentary Project Report</title>
+<title>Course Commentary Project Report</title>
+
 </head>
 <body>
+  <h1>Course Commentary Project Report</h1>
   <h3>Team #9, Anusri Chavali, Maryia Sakharava,  Dylan Le</h3>
     
   <h3>Team Members Working on Proposal</h2>
