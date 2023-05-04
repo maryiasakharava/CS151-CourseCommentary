@@ -3,6 +3,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableCellRenderer;
 
+//text renderer class makes it so that the jtable which is used for displaying the reviews wraps texts
 public class TextAreaRenderer extends DefaultTableCellRenderer {
     private final JTextArea area = new JTextArea();
 
@@ -11,6 +12,7 @@ public class TextAreaRenderer extends DefaultTableCellRenderer {
         area.setWrapStyleWord(true);
     }
 
+    //the values which are put into the jtable will be wrapped and the row and column heights will be adjusted in order to accommodate the data
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         area.setText((String) value);
         int rowHeight = table.getRowHeight(row);

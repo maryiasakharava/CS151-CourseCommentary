@@ -1,4 +1,6 @@
 
+//Home page -- includes the custom created logo and search feature
+//Home page for unregistered users
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -7,7 +9,6 @@ import java.awt.*;
 import java.awt.print.PrinterException;
 
 import java.io.IOException;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,6 +30,7 @@ public class CourseCommentary extends JFrame  {
     Graphics g;
 
     Font f1;
+
     public CourseCommentary(){
 
         setUndecorated(true);
@@ -42,7 +44,8 @@ public class CourseCommentary extends JFrame  {
 
         f1 = new Font(Font.DIALOG_INPUT, Font.BOLD, 25);
 
-        i = new ImageIcon("My project-1 (2).png");
+        //Loading in the custom logo to display in the center of the home page
+        i = new ImageIcon("CourseCommentaryLogo.png");
         Image i1 = i.getImage();
         bi = new BufferedImage(i1.getWidth(null),i1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
         g = bi.createGraphics();
@@ -64,20 +67,26 @@ public class CourseCommentary extends JFrame  {
         setVisible(true);
     }
 
+    //create panel which is on the top of the home page
     private void logInSignUpPanel()
     {
         JPanel loginSignupPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         loginSignupPanel.setBackground(c.getColor());
+
+        //create login and signup button which will be displayed at the top of the home page
         JButton loginButton = new JButton("Log In");
         loginButton.setBackground(c1.getColor());
+
+
         JButton signupButton = new JButton("Sign Up");
         signupButton.setBackground(c1.getColor());
-        loginButton.setBounds(400, 10, 200, 100);
-        signupButton.setSize(150, 100);
+
+        //arranging the buttons on the panel and setting
         loginSignupPanel.add(loginButton);
         loginSignupPanel.add(signupButton);
         add(loginSignupPanel, BorderLayout.NORTH);
 
+        //redirect to the login page when login button clicked
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -85,8 +94,7 @@ public class CourseCommentary extends JFrame  {
             }
         });
 
-        // frame.add(signup);
-
+        //redirect to the signup button when
         signupButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Signup s1 = null;
@@ -100,6 +108,7 @@ public class CourseCommentary extends JFrame  {
         });
     }
 
+    //creating the search panel which contains the search bar, search button, and the logo
     private void searchPanel()
     {
         JPanel centerPanel = new JPanel(null);
@@ -141,6 +150,7 @@ public class CourseCommentary extends JFrame  {
 
     }
 
+    //bottom panel which just contains the border
     private void bottomPanel()
     {
         JPanel bottomPanel = new JPanel();

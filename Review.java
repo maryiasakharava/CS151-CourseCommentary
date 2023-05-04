@@ -9,19 +9,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-// Press ⇧ twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+//The Review page which is where users can write their reviews
+
 public class Review extends JFrame implements ActionListener  {
 
-  JPanel panel;
-  Dimension screenSize;
   JLabel title, label, label2, label3, courseDIff, takeAgain, textbook;
-  ReviewObject rw;
+
 
   JTextField course;
   JTextField prof;
   JTextArea review;
-  JLabel diff;
   JMenuBar jb;
   JMenu men;
   JButton submit;
@@ -61,6 +58,8 @@ public class Review extends JFrame implements ActionListener  {
     setVisible(true);
   }
 
+  //the action performed class which converts the information entered into the review into a usable form for writing it into the reviews.txt
+
   @Override
   public void actionPerformed(ActionEvent e) {
 
@@ -73,7 +72,7 @@ public class Review extends JFrame implements ActionListener  {
     a[3] = s;
     a[4] = s1;
     a[5] = s2;
-    rw = new ReviewObject(a[0], a[1], s, s1, s2,a[2]);
+
     h.put(course.getText(), Arrays.toString(a));
     //read into the file
     try {
@@ -89,7 +88,7 @@ public class Review extends JFrame implements ActionListener  {
 
   }
 
-
+  //the readIntoFile function which takes the review that has been entered and writes it into the reviews.txt file
   public int readIntoFile() throws IOException {
 
     //load all the info which is entered into the HashMap into the txt file
@@ -138,10 +137,11 @@ public class Review extends JFrame implements ActionListener  {
     return 1;
   }
 
+  //the top panel which contains the reviews title
   private void topPanel()
   {
     JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    title = new JLabel("Please Sign into your Account");
+    title = new JLabel("Write Your Review");
     title.setFont(f);
     title.setForeground(c1.getColor());
     top.add(title);
@@ -150,12 +150,16 @@ public class Review extends JFrame implements ActionListener  {
     add(top);
   }
 
+  //the middle panel which contains all the text fields, buttons, and menu for ratings
+  //all of the labels and buttons are aligned
   private void middlePanel()
   {
+
     JPanel panel = new JPanel(null);
     panel.setBounds(0, 30, this.getWidth(), this.getHeight()-30);
     panel.setBackground(c1.getColor());
 
+    //all user input text fields plus labels are included here
     label = new JLabel("Course: ");
     label.setFont(f1);
     label.setForeground(c.getColor());
@@ -185,6 +189,7 @@ public class Review extends JFrame implements ActionListener  {
     panel.add(prof);
 
 
+    //These labels are for the features which are not text input
     courseDIff = new JLabel("Course Difficulty:  ");
     courseDIff.setFont(f1);
     courseDIff.setBounds(140, 150, 200, 30);
@@ -203,6 +208,7 @@ public class Review extends JFrame implements ActionListener  {
     textbook.setForeground(c.getColor());
     panel.add(textbook);
 
+    //the menu bar which is giving the rating on a scale of 1-10
     jb = new JMenuBar();
     jb.setBounds(360, 150, 200, 30);
 
@@ -227,6 +233,7 @@ public class Review extends JFrame implements ActionListener  {
     men.add(item9);
     JMenuItem item10 = new JMenuItem("10");
     men.add(item10);
+    //when any of the buttons in the menu is clicked they are stored in the array for the review
     item1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         s = item1.getText();
@@ -279,6 +286,8 @@ public class Review extends JFrame implements ActionListener  {
     panel.add(jb);
     jb.setVisible(true);
 
+    //radio buttons which say if the user would take the course again and if they need a textbook for the course
+    //these inputs are also stored in the array
     j1 = new JRadioButton("Yes");
     j1.setText("Yes");
     j1.setBounds(360,190,60,30 );
@@ -314,6 +323,7 @@ public class Review extends JFrame implements ActionListener  {
       public void actionPerformed(ActionEvent ev) {
         s2 = j4.getText();      }
     });
+
     ButtonGroup bg1 = new ButtonGroup();
     bg1.add(j3);
     bg1.add(j4);
@@ -325,7 +335,7 @@ public class Review extends JFrame implements ActionListener  {
     review.setBounds(360, 270, 200, 100);
     panel.add(review);
 
-
+    //submit button and back button which submit the review(leading to the review being written into the reviews.txt file) and send us back to home page respectively
     submit = new JButton("Submit Review");
     submit.setBounds(360, 380, 150, 30);
     submit.addActionListener(this);
@@ -335,6 +345,7 @@ public class Review extends JFrame implements ActionListener  {
     back.setBounds(50, 400, 150, 30);
     panel.add(back);
 
+    //back button which gets us back to home
     back.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {

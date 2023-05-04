@@ -1,3 +1,5 @@
+//password exceptions used to tell the user when they have incorrectly entered a password
+
 public class PasswordException extends Exception {
 	String message;
 	public PasswordException() {

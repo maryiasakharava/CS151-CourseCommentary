@@ -8,21 +8,18 @@ import java.util.HashMap;
 import java.util.Random;
 import javax.swing.*;
 
+//signup page which allows new users to sign up for an account
 public class Signup extends JFrame implements ActionListener {
     JLabel label1, label2, label3, label4, label5;
     JTextField field1, field2, field3;
     JButton signupButton;
     JPasswordField password;
+
     RegisteredUser user;
     HashMap<String, String> h;
 
     JColorChooser c, c1;
     Font f, f1;
-
-    ImageIcon i, newIcon;
-    BufferedImage bi;
-    Graphics g;
-
 
      public Signup() throws IOException{
          setVisible(true);
@@ -30,6 +27,7 @@ public class Signup extends JFrame implements ActionListener {
          setLayout(null);
          setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+         //implements the colors and fonts for the page
          c = new JColorChooser();
          c.setColor(0, 153,153);
 
@@ -39,24 +37,20 @@ public class Signup extends JFrame implements ActionListener {
          f = new Font("DIALOG_INPUT", Font.PLAIN, 20);
          f1 = new Font(Font.DIALOG_INPUT, Font.PLAIN, 18);
 
-         i = new ImageIcon("My project-1 (2).png");
-         Image i1 = i.getImage();
-         bi = new BufferedImage(i1.getWidth(null),i1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-         g = bi.createGraphics();
-         g.drawImage(i1,350,150,200,80,null);
-         newIcon = new ImageIcon(bi);
-
          setTitle("Create an Account");
 
          topPanel();
 
          middlePanel();
 
-
+         //creates a new hashmap which will store the users
          h = new HashMap<>();
+         //when closing this page, the new user which has been created will be written into the users.txt file
          setDefaultCloseOperation(readIntoFile());
 
      }
+
+     //the action performed function makes sure the password is strong enough and the user is not already existing before allowing a successful signup
     @Override
     public void actionPerformed(ActionEvent ev) {
         //only run this if the source of action is the sign up button
@@ -155,8 +149,6 @@ public class Signup extends JFrame implements ActionListener {
                 a[1] = field1.getText() + " " + field2.getText();
                 a[2] = field3.getText();
                 h.put(field3.getText(), Arrays.toString(a));
-                user = new RegisteredUser(field1.getText(),field2.getText(),field3.getText(),pass);
-
                 //read into the file
                 try {
                     readIntoFile();
@@ -180,6 +172,8 @@ public class Signup extends JFrame implements ActionListener {
             password.setText("");
         }
     }
+
+    //the review needs to be written into the file
     public int readIntoFile() throws IOException {
 
         //load all the info which is entered into the HashMap into the txt file
@@ -227,6 +221,7 @@ public class Signup extends JFrame implements ActionListener {
         return 1;
     }
 
+    //the topPanel contains the title
     private void topPanel()
     {
         JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -239,30 +234,42 @@ public class Signup extends JFrame implements ActionListener {
         add(top);
     }
 
+    //the middle panel contains all the text fields which are required for creating a new user
     private void middlePanel()
     {
         JPanel mid = new JPanel();
         mid.setBackground(c1.getColor());
         mid.setBounds(0, 30, this.getWidth(), this.getHeight()-30);
         mid.setLayout(null);
+
         label2 = new JLabel("First Name: ");
         label3 = new JLabel("Last Name: ");
         label4 = new JLabel("Email: ");
         label5 = new JLabel("Password:");
+
+        //setting the formatting for all the labels
         label2.setFont(f1);
         label3.setFont(f1);
         label4.setFont(f1);
         label5.setFont(f1);
+
         label2.setForeground(c.getColor());
         label3.setForeground(c.getColor());
         label4.setForeground(c.getColor());
         label5.setForeground(c.getColor());
+
+        //creates the field for the first name, last name, the email, and password
         field1 = new JTextField();
         field2 = new JTextField();
         field3 = new JTextField();
+
+
+        //the password field and submit buttons are created; the submit button goes to actionListener
         password = new JPasswordField();
         signupButton = new JButton("Submit");
         signupButton.addActionListener(this);
+
+        //set the bounds for all the different labels and text fields
         label2.setBounds(140, 70, 200, 30);
         label3.setBounds(140, 110, 200, 30);
         label4.setBounds(140, 150, 200, 30);
@@ -282,6 +289,7 @@ public class Signup extends JFrame implements ActionListener {
         mid.add(password);
         mid.add(signupButton);
 
+        //the back button returns to the home page
         JButton back = new JButton("Return to Home");
         back.setBounds(50, 500, 150, 30);
 

@@ -41,7 +41,6 @@ public class RegisteredUser extends User {
 
     private String password1;
     private ArrayList<Review> arr = new ArrayList<Review>();
-    //private ArrayList<Review> arr = new ArrayList<Review>();
     public RegisteredUser(String first, String last,String email, String password){
         this.firstName = first;
         this.lastName = last;
@@ -50,6 +49,12 @@ public class RegisteredUser extends User {
     }
 
     public void writeReview(){
+
+    }
+    public void deleteReview(){
+
+    }
+    public void seeMyReviews(){
 
     }
 

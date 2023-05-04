@@ -7,6 +7,7 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+//page which displays the reviews based upon the search made by the users but is modified to support the registered user
 public class ReviewDisplayLoggedIn extends JFrame {
     private ArrayList<String[]> reviews2;
     private JTable display;
@@ -18,7 +19,9 @@ public class ReviewDisplayLoggedIn extends JFrame {
 
     Font f, f1;
     private String searchEntry;
-
+    //the constructor takes the search entry as a parameter
+    //this search entry determines which of the reviews from reviews.txt get printed into the table
+    //in the search function, when the user presses search, the action listener calls this function w the search entry as a parameter
     public ReviewDisplayLoggedIn(String se) throws PrinterException {
         searchEntry = se;
 
@@ -35,17 +38,33 @@ public class ReviewDisplayLoggedIn extends JFrame {
         f = new Font(Font.DIALOG_INPUT, Font.BOLD, 25);
         f1 = new Font(Font.DIALOG_INPUT, Font.BOLD, 18);
 
+        //the reviews for a specific course are all stored in the reviews.txt file as an Arraylist of strings which are attached to one hashmap
+        //initialize the arraylist which will take in all the reviews for a course
         reviews2 = new ArrayList<String[]>();
 
-        backToHomePanel();
-        displayPanel();
+        //read in file is the function which will read in all the relevant reviews from the txt file
+        ReadInFile("reviews.txt");
 
-        JPanel bottom = new JPanel();
-        bottom.setBackground(c.getColor());
-        add(bottom, BorderLayout.SOUTH);
+        //if there are no reviews found for a search, a dialog pane pops up telling the user there are no reviews
+        if(reviews2.size() == 0)
+        {
+            CourseCommentaryLoggedIn c = new CourseCommentaryLoggedIn();
+            JOptionPane.showMessageDialog(null, "Sorry! No reviews found for " + searchEntry);
+            dispose();
+        }
+        //if there are reviews found, all of the panels for the review display will be initialized
+        else
+        {
+            backToHomePanel();
+            displayPanel();
+            JPanel bottom = new JPanel();
+            bottom.setBackground(c.getColor());
+            add(bottom, BorderLayout.SOUTH);
+        }
 
     }
 
+    //the function reads in reviews which are from the reviews.txt file into the arraylist of strings
     public void ReadInFile(String filepath) {
         //Read in the values that are in the username, password, full name, and email fields into a hashmap
         try (BufferedReader br = new BufferedReader(new FileReader(filepath))) {
@@ -67,8 +86,6 @@ public class ReviewDisplayLoggedIn extends JFrame {
                     catch (NumberFormatException ex){
                         ex.printStackTrace();
                     }
-
-
                 }
             }
         } catch (IOException e) {
@@ -77,6 +94,7 @@ public class ReviewDisplayLoggedIn extends JFrame {
 
     }
 
+    //top Panel on the top of the Review display which lets you return to the home page
     public void backToHomePanel() {
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         topPanel.setBackground(c.getColor());
@@ -93,6 +111,7 @@ public class ReviewDisplayLoggedIn extends JFrame {
             }
         });
 
+        //redirects to the write review page
         writeReview.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Review r1 = null;
@@ -109,40 +128,46 @@ public class ReviewDisplayLoggedIn extends JFrame {
         add(topPanel, BorderLayout.NORTH);
     }
 
+    //the middle display panel contains a JTable which holds all the reviews which are associated with the search entry
     public void displayPanel() throws PrinterException {
-        ReadInFile("reviews.txt");
 
         JPanel displayPanel = new JPanel(new BorderLayout());
         displayPanel.setBounds(0, 30, getWidth(), getHeight() - 15);
 
         display = new JTable();
 
+        //default model which has six different columbs for the different aspects of the review
         DefaultTableModel model = (DefaultTableModel) display.getModel();
         model.addColumn("Course");
         model.addColumn("Professor");
         model.addColumn("Review");
-        model.addColumn("Rating(1-10)");
+        model.addColumn("Rating");
         model.addColumn("Would Take Again");
         model.addColumn("Textbook Required");
 
+        //uses textAreaRenderer class in order to allow text wrapping in the columns
         display.getColumnModel().getColumn(2).setCellRenderer(new TextAreaRenderer());
 
-
+        //this for loop adds each new review into the table on a new row and adds a row in between to create space in the table
         for(String[] rev: reviews2) {
             model.addRow(rev);
             model.addRow(new Object[] {"", "", "", ""});
 
-    }
+        }
 
+        //this scrollPane contains the table
         JScrollPane jp = new JScrollPane(display);
         JPanel topPanel = new JPanel(new BorderLayout());
 
+        //the topPanel is created to arrange the display table, header, and footer
+        //header shows which search entry reviews are being shown
         topPanel.setBackground(c1.getColor());
         JLabel courseName = new JLabel("Showing reviews for " + searchEntry);
         courseName.setFont(f);
         courseName.setForeground(c.getColor());
         topPanel.add(courseName, BorderLayout.CENTER);
 
+        //the bottom panel contains the statistics of the course; the average course rating and the percent of users who would take the class again
         JPanel stats = new JPanel(new FlowLayout());
         JLabel averageRating = new JLabel("Rating: "+aveRating());
         JLabel takeAgain = new JLabel("Would take again: "+ percentTakeAgain()+"%");
@@ -154,18 +179,23 @@ public class ReviewDisplayLoggedIn extends JFrame {
         stats.setBackground(c1.getColor());
         stats.add(takeAgain);
 
+        //the bottom panel containing the stats is added to display panel
         displayPanel.add(stats, BorderLayout.SOUTH);
+        //top panel containing the title is added to displayPanel
         displayPanel.add(topPanel, BorderLayout.NORTH);
+        //the table is added to the displayPanel
         displayPanel.add(jp, BorderLayout.CENTER);
 
         add(displayPanel);
     }
+    //average rating takes all of the ratings input by users and averages them
     public String aveRating(){
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
         averageRating = ratingSum/countReviews;
         String formattedNumber = decimalFormat.format(averageRating);
         return formattedNumber;
     }
+    //calculates how many users out of all reviews would take the course again
     public String percentTakeAgain(){
         DecimalFormat decimalFormat = new DecimalFormat("#.#");
         Double count = (countTakeAgain*1.0)/(countReviews*1.0);

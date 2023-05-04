@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,9 +7,9 @@ import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
 import java.io.IOException;
 
+//the home page which is shown to registered users
 public class CourseCommentaryLoggedIn extends JFrame{
-        // JFrame frame ;
-        // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         JButton login;
         JButton signup;
 
@@ -34,14 +35,15 @@ public class CourseCommentaryLoggedIn extends JFrame{
             setSize(800, 800);
             setLayout(new BorderLayout());
 
-            // Log In and Sign Up Buttons
-            i = new ImageIcon("My project-1 (2).png");
+            // imports the logo into the home page to display in the center of the home page
+            i = new ImageIcon("CourseCommentaryLogo.png");
             Image i1 = i.getImage();
             bi = new BufferedImage(i1.getWidth(null),i1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
             g = bi.createGraphics();
             g.drawImage(i1,350,150,600,360,null);
             newIcon = new ImageIcon(bi);
 
+            //panels which are top, middle, bottom of the frame
             writeReview();
 
             searchPanel();
@@ -50,10 +52,13 @@ public class CourseCommentaryLoggedIn extends JFrame{
 
         }
 
+        //top panel which contains the write review buttons and the log out button
         private void writeReview()
         {
+
             JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             topPanel.setBackground(c.getColor());
+            //write review and log out buttons
             JButton writeReviewButton = new JButton("Write Review");
             JButton logOut = new JButton("Log Out");
             topPanel.add(writeReviewButton);
@@ -61,6 +66,7 @@ public class CourseCommentaryLoggedIn extends JFrame{
 
             add(topPanel, BorderLayout.NORTH);
 
+            //redirect to the write review page
             writeReviewButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     Review r1 = null;
@@ -74,6 +80,7 @@ public class CourseCommentaryLoggedIn extends JFrame{
                 }
             });
 
+            //redirect to the unregistered user home page
             logOut.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     CourseCommentary c = null;
@@ -83,51 +90,55 @@ public class CourseCommentaryLoggedIn extends JFrame{
             });
         }
 
-    private void searchPanel()
-    {
-        JPanel centerPanel = new JPanel(null);
-        centerPanel.setBackground(c1.getColor());
-        // Put a title next to search bar
-        JLabel titleLabel = new JLabel("Course Search");
-        titleLabel.setBounds(100, 50, 200, 25);
-        titleLabel.setFont(f);
-        titleLabel.setForeground(c.getColor());
 
-        centerPanel.add(titleLabel);
-        // Search bar created
-        JTextField searchBar = new JTextField(30);
-        searchBar.setBounds(300, 50, 300, 25);
-        centerPanel.add(searchBar);
+        private void searchPanel()
+        {
+            //creating the center panel which will have all the search components -- search bar and search button
+            //inputs the logo in the center of the home page
+            JPanel centerPanel = new JPanel(null);
+            centerPanel.setBackground(c1.getColor());
+            // Put a title next to search bar
+            JLabel titleLabel = new JLabel("Course Search");
+            titleLabel.setBounds(100, 50, 200, 25);
+            titleLabel.setFont(f);
+            titleLabel.setForeground(c.getColor());
 
-        // Make a button to enter searches
-        JButton searchButton = new JButton("Search");
-        searchButton.setBounds(600, 50, 150, 25);
-        centerPanel.add(searchButton);
+            centerPanel.add(titleLabel);
+            // Search bar created
+            JTextField searchBar = new JTextField(30);
+            searchBar.setBounds(300, 50, 300, 25);
+            centerPanel.add(searchBar);
 
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                try {
-                    ReviewDisplayLoggedIn rd = new ReviewDisplayLoggedIn(searchBar.getText());
-                } catch (PrinterException ex) {
-                    throw new RuntimeException(ex);
+            // Make a button to enter searches
+            JButton searchButton = new JButton("Search");
+            searchButton.setBounds(600, 50, 150, 25);
+            centerPanel.add(searchButton);
+
+            //creates a new review display page which takes in the search bar entry and searches for reviews that match
+            searchButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    dispose();
+                    try {
+                        ReviewDisplayLoggedIn rd = new ReviewDisplayLoggedIn(searchBar.getText());
+                    } catch (PrinterException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
-            }
-        });
+            });
 
-        JLabel icon = new JLabel(newIcon);
-        icon.setBounds(0, 200, 800, 400);
-        centerPanel.add(icon);
-        add(centerPanel);
+            JLabel icon = new JLabel(newIcon);
+            icon.setBounds(0, 200, 800, 400);
+            centerPanel.add(icon);
+            add(centerPanel);
+        }
 
-    }
-
-    private void bottomPanel()
-    {
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setBackground(c.getColor());
-        add(bottomPanel, BorderLayout.SOUTH);
-    }
+        //the bottom panel which has the border
+        private void bottomPanel()
+        {
+            JPanel bottomPanel = new JPanel();
+            bottomPanel.setBackground(c.getColor());
+            add(bottomPanel, BorderLayout.SOUTH);
+        }
 }
 
 

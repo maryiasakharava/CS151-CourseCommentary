@@ -5,9 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
 
+//the Login page which will let users log in and provide an appropriate response to user being found or not found
 public class Login extends JFrame implements ActionListener {
-    String usernameInput;
-    String passwordInput;
     JLabel l1, l2, l3;   //label for email and password
     JTextField tf1; // email field
     JButton btn1; // login button
@@ -18,12 +17,8 @@ public class Login extends JFrame implements ActionListener {
 
     JColorChooser c, c1;
 
-    ImageIcon i, newIcon;
-    BufferedImage bi;
-    Graphics g;
-
-
     public Login() {
+
         setTitle("Login");
         setVisible(true);
         setSize(800, 400);
@@ -41,18 +36,12 @@ public class Login extends JFrame implements ActionListener {
 
         topPanel();
 
-        i = new ImageIcon("My project-1 (2).png");
-        Image i1 = i.getImage();
-        bi = new BufferedImage(i1.getWidth(null),i1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        g = bi.createGraphics();
-        g.drawImage(i1,250,600,200,130,null);
-        newIcon = new ImageIcon(bi);
-
-
         middlePanel();
 
     }
 
+    //The read in file will read in all users which have signed up
+    //The users will all be stored in a hashmap which will then be traversed and matched with the user's username and password when they input it
     public void ReadInFile(String filepath)
     {
         //Read in the values that are in the username, password, full name, and email fields into a hashmap
@@ -70,6 +59,7 @@ public class Login extends JFrame implements ActionListener {
 
     }
 
+    //this action performed function will give various popups if the password is incorrect or user is not found
     @Override
     public void actionPerformed(ActionEvent e) {
         //this action performed method only acts if the action's source is pressing the loginButton
@@ -102,6 +92,7 @@ public class Login extends JFrame implements ActionListener {
         }
     }
 
+    //the top panel which gives the title
     private void topPanel()
     {
         JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -114,6 +105,7 @@ public class Login extends JFrame implements ActionListener {
         add(top);
     }
 
+    //the middle panel which has all the text fields to input the username and password
     private void middlePanel()
     {
         JPanel middlePanel = new JPanel(null);
@@ -139,6 +131,7 @@ public class Login extends JFrame implements ActionListener {
         middlePanel.add(p1);
         middlePanel.add(btn1);
 
+        //this button will return the user back to the home
         JButton back = new JButton("Return to Home");
         back.setBounds(50, 300, 150, 30);
         middlePanel.add(back);
@@ -153,6 +146,7 @@ public class Login extends JFrame implements ActionListener {
 
         add(middlePanel);
 
+        //refers back to the action listener class which will return the correct popup based on the  user's input
         btn1.addActionListener(this);
         h = new HashMap<>();
         ReadInFile("users.txt");
