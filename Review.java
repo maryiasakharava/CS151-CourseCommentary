@@ -16,7 +16,7 @@ public class Review extends JFrame implements ActionListener  {
   JPanel panel;
   Dimension screenSize;
   JLabel title, label, label2, label3, courseDIff, takeAgain, textbook;
-
+  ReviewObject rw;
 
   JTextField course;
   JTextField prof;
@@ -73,7 +73,7 @@ public class Review extends JFrame implements ActionListener  {
     a[3] = s;
     a[4] = s1;
     a[5] = s2;
-
+    rw = new ReviewObject(a[0], a[1], s, s1, s2,a[2]);
     h.put(course.getText(), Arrays.toString(a));
     //read into the file
     try {
