@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.awt.print.PrinterException;
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -15,6 +16,10 @@ public class ReviewDisplay extends JFrame {
     private ArrayList<String[]> reviews2;
     private JTable display;
     JColorChooser c, c1;
+    Double averageRating;
+    double ratingSum;
+    int countTakeAgain;
+    int countReviews;
 
     Font f, f1;
     private String searchEntry;
@@ -56,6 +61,20 @@ public class ReviewDisplay extends JFrame {
                 {
                     String[] arr = keyValue[1].split(",");
                     reviews2.add(arr);
+                    countReviews++;
+                    if(arr[4].equals(" Yes")){
+                        countTakeAgain++;
+                    }
+                    try{
+                    int rating = Integer.valueOf(arr[3].substring(1));
+                    ratingSum+=rating;
+                    }
+                    catch (NumberFormatException ex){
+                        ex.printStackTrace();
+                    }
+
+
+
                 }
             }
         } catch (IOException e) {
@@ -81,24 +100,26 @@ public class ReviewDisplay extends JFrame {
     }
 
     public void displayPanel() throws PrinterException {
-        ReadInFile("/Users/anusri/Downloads/CS151-CourseCommentary-main/reviews.txt");
+        ReadInFile("reviews.txt");
 
         JPanel displayPanel = new JPanel(new BorderLayout());
         displayPanel.setBounds(0, 30, getWidth(), getHeight() - 15);
 
         display = new JTable();
-
         DefaultTableModel model = (DefaultTableModel) display.getModel();
         model.addColumn("Course");
         model.addColumn("Professor");
         model.addColumn("Review");
         model.addColumn("Rating");
         model.addColumn("Would Take Again");
+        model.addColumn("Textbook Required");
+
+        display.getColumnModel().getColumn(2).setCellRenderer(new TextAreaRenderer());
 
 
         for(String[] rev: reviews2) {
             model.addRow(rev);
-        }
+            model.addRow(new Object[] {"", "", "", ""});        }
 
         JScrollPane jp = new JScrollPane(display);
 
@@ -111,8 +132,8 @@ public class ReviewDisplay extends JFrame {
         topPanel.add(courseName, BorderLayout.CENTER);
 
         JPanel stats = new JPanel(new FlowLayout());
-        JLabel averageRating = new JLabel("Rating: ");
-        JLabel takeAgain = new JLabel("Would take again: ");
+        JLabel averageRating = new JLabel("Rating: "+aveRating());
+        JLabel takeAgain = new JLabel("Would take again: "+ percentTakeAgain()+"%");
         averageRating.setFont(f);
         averageRating.setForeground(c.getColor());
         takeAgain.setFont(f);
@@ -126,6 +147,18 @@ public class ReviewDisplay extends JFrame {
         displayPanel.add(jp, BorderLayout.CENTER);
 
         add(displayPanel);
+    }
+    public String aveRating(){
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        averageRating = ratingSum/countReviews;
+        String formattedNumber = decimalFormat.format(averageRating);
+        return formattedNumber;
+    }
+    public String percentTakeAgain(){
+        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        Double count = (countTakeAgain*1.0)/(countReviews*1.0);
+        String formattedNumber = decimalFormat.format(count*100.0);
+        return formattedNumber;
     }
 
 }

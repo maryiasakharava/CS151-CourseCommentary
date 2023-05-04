@@ -91,6 +91,7 @@ public class Login extends JFrame implements ActionListener {
                 //if username is not contained, need to sign up
             } else {
                 JOptionPane.showMessageDialog(btn1, "Account not found. Sign up for an account");
+                Login log = new Login();
                 this.dispose();
             }
 

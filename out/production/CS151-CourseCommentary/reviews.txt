@@ -1,3 +1,10 @@
-CS151:[CS151, Smith, Great class!]
-CS 151:[CS 151, Bob Jones, This is an easy class. ]
-CS151:[CS151, Smith, Great class! Lots of HW tho, takes a log time , 5]
+CS 100W:CS 100W, John Doe, This class is hard. , 6, Yes, Yes
+CS 146:CS 146, Bob Joe, This class helped me with interviews. , 9, Yes, No
+CS 151:CS 151, Jane Doe, I liked this professor and she was very nice. , 10, Yes, Yes
+CS 151:CS 151, Jane Doe, I liked this class. , 10, Yes, No
+CS 151:CS 151, Jo Doe, Hard class but good information. , 7, Yes, No
+CS 151:CS 151, Smith, The class is hard, 2, Yes, No
+CS 151:CS 151, Smith, Review, 1, Yes, Yes
+CS 151:CS 151, Smith, Horrible class, 1, No, Yes
+CS 151:CS 151, Doe, Best class ever! The professor is super clear about the requirements., 10, Yes, Yes
+CS 151:CS 151, Doe, THe class is ok!, 6, Yes, Yes

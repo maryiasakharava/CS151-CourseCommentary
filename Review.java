@@ -15,7 +15,7 @@ public class Review extends JFrame implements ActionListener  {
 
   JPanel panel;
   Dimension screenSize;
-  JLabel title, label, label2, label3, courseDIff, takeAgain;
+  JLabel title, label, label2, label3, courseDIff, takeAgain, textbook;
 
 
   JTextField course;
@@ -26,8 +26,8 @@ public class Review extends JFrame implements ActionListener  {
   JMenu men;
   JButton submit;
   HashMap<String, String> h;
-  String s, s1;
-  JRadioButton j1, j2;
+  String s, s1, s2;
+  JRadioButton j1, j2, j3 ,j4;
 
   JColorChooser c, c1;
   Font f, f1;
@@ -66,12 +66,14 @@ public class Review extends JFrame implements ActionListener  {
 
     //set the password and store all user info into an array; all of this will be put into the hashmap and written into the file
     String c = new String(course.getText());
-    String[] a = new String[5];
+    String[] a = new String[6];
     a[0] = course.getText();
     a[1] = prof.getText();
     a[2] = review.getText();
     a[3] = s;
     a[4] = s1;
+    a[5] = s2;
+
     h.put(course.getText(), Arrays.toString(a));
     //read into the file
     try {
@@ -168,7 +170,7 @@ public class Review extends JFrame implements ActionListener  {
 
     label3 = new JLabel("Review:  ");
     label3.setFont(f1);
-    label3.setBounds(140, 230, 200, 30);
+    label3.setBounds(140, 270, 200, 30);
     label3.setForeground(c.getColor());
     panel.add(label3);
 
@@ -194,6 +196,12 @@ public class Review extends JFrame implements ActionListener  {
     takeAgain.setBounds(140, 190, 200, 30);
     takeAgain.setForeground(c.getColor());
     panel.add(takeAgain);
+
+    textbook = new JLabel("Textbooks required:  ");
+    textbook.setFont(f1);
+    textbook.setBounds(140, 230, 200, 30);
+    textbook.setForeground(c.getColor());
+    panel.add(textbook);
 
     jb = new JMenuBar();
     jb.setBounds(360, 150, 200, 30);
@@ -278,12 +286,13 @@ public class Review extends JFrame implements ActionListener  {
       public void actionPerformed(ActionEvent ev) {
         s1 = j1.getText();      }
     });
+
     j2 = new JRadioButton("No");
     j2.setText("No");
     j2.setBounds(430,190,60,30 );
     j2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
-        s1 = j1.getText();      }
+        s1 = j2.getText();      }
     });
     ButtonGroup bg = new ButtonGroup();
     bg.add(j1);
@@ -291,14 +300,34 @@ public class Review extends JFrame implements ActionListener  {
     panel.add(j1);
     panel.add(j2);
 
+    j3 = new JRadioButton("Yes");
+    j3.setText("Yes");
+    j3.setBounds(360,230,60,30 );
+    j3.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s2 = j3.getText();      }
+    });
+    j4 = new JRadioButton("No");
+    j4.setText("No");
+    j4.setBounds(430,230,60,30 );
+    j4.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        s2 = j4.getText();      }
+    });
+    ButtonGroup bg1 = new ButtonGroup();
+    bg1.add(j3);
+    bg1.add(j4);
+    panel.add(j3);
+    panel.add(j4);
+
     review = new JTextArea();
     review.setLineWrap(true);
-    review.setBounds(360, 230, 200, 100);
+    review.setBounds(360, 270, 200, 100);
     panel.add(review);
 
 
     submit = new JButton("Submit Review");
-    submit.setBounds(360, 360, 150, 30);
+    submit.setBounds(360, 380, 150, 30);
     submit.addActionListener(this);
     panel.add(submit);
 
