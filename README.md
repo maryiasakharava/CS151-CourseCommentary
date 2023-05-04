@@ -81,35 +81,35 @@ Run Controller class
 </p>
 <h3>Demo Snapshots</h3>
 <p>Home page when app is first opened</p>
-<img height="450" src="./HomePageBeforeLogin.png" width="450"/>
+<img height="450" src="./Proposal/HomePageBeforeLogin.png" width="450"/>
 <p>Login page for existing users</p>
-<img height="250" src="./LoginForm.png" width="450"/>
+<img height="250" src="./Proposal/LoginForm.png" width="450"/>
 <p>Login screen when account is not found</p>
-<img height="250" src="./UnsucessfulLogin.png" width="450"/>
+<img height="250" src="./Proposal/UnsucessfulLogin.png" width="450"/>
 <p>Login screen when password is not found</p>
-<img height="250" src="./IncorrectPassword.png" width="450"/>
+<img height="250" src="./Proposal/IncorrectPassword.png" width="450"/>
 <p>Login screen for a successful login</p>
-<img height="250" src="./SuccessfulLogin.png" width="450"/>
+<img height="250" src="./Proposal/SuccessfulLogin.png" width="450"/>
 <p>Home screen for a registered user – contains a write review and log out button</p>
-<img height="450" src="./HomePageLoggedIn.png" width="450"/>
+<img height="450" src="./Proposal/HomePageLoggedIn.png" width="450"/>
 <p>Pop up which is shown when a search entry has no associated reviews</p>
-<img height="450" src="./UnsuccessfulSearch.png" width="450"/>
+<img height="450" src="./Proposal/UnsuccessfulSearch.png" width="450"/>
 <p>Reviews display for search entry: CS 151</p>
-<img height="450" src="./ReviewsDisplay.png" width="450"/>
+<img height="450" src="./Proposal/ReviewsDisplay.png" width="450"/>
 <p>Page to write review</p>
-<img height="250" src="./WriteReview.png" width="450"/>
+<img height="250" src="./Proposal/WriteReview.png" width="450"/>
 <p>Menu for course difficulty rating</p>
-<img height="250" src="./WriteReviewWithMenu.png" width="450"/>
+<img height="250" src="./Proposal/WriteReviewWithMenu.png" width="450"/>
 <p>Pop up which is shown when a review is successfully posted</p>
-<img height="250" src="./SuccessfulReview.png" width="450"/>
+<img height="250" src="./Proposal/SuccessfulReview.png" width="450"/>
 <p>Signup page and various popups related to unsuccessful sign up</p>
-<img height="350" src="./SignUp.png" width="500"/>
-<img height="350" src="./BadPass.png" width="500"/>
-<img height="350" src="./BadPass1.png" width="500"/>
-<img height="350" src="./BadPass2.png" width="500"/>
-<img height="350" src="./BadPass3.png" width="500"/>
-<img height="350" src="./BadPass4.png" width="500"/>
-<img height="350" src="./BadPass5.png" width="500"/>
+<img height="350" src="./Proposal/SignUp.png" width="500"/>
+<img height="350" src="./Proposal/BadPass.png" width="500"/>
+<img height="350" src="./Proposal/BadPass1.png" width="500"/>
+<img height="350" src="./Proposal/BadPass2.png" width="500"/>
+<img height="350" src="./Proposal/BadPass3.png" width="500"/>
+<img height="350" src="./Proposal/BadPass4.png" width="500"/>
+<img height="350" src="./Proposal/BadPass5.png" width="500"/>
 <p>Successful Signup</p>
-<img height="350" src="./SuccessfulSignup.png" width="500"/>
+<img height="350" src="./Proposal/SuccessfulSignup.png" width="500"/>
 
