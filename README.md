@@ -75,9 +75,9 @@ All the operations that do not require an account
 <p>This project offers a solution to the problem of students not being able to view course reviews before registration unless they know the name of the professor. With our project, students can search for a specific course number and access reviews for that course. The reviews include the professor's name, student comments, a rating on a scale of 1 to 10, whether the student would take the course again, and whether there are any required textbooks. The solution is designed with the purpose of making the planning of the next semester easier without having to know what professor is teaching the course. </p>
 
 <h3> Steps to Run the Code</h3>
-<p>Import the project into an IDE with java installed  
-Build 
-Run Controller class
+<p>Import the project into an IDE with java installed  </p> 
+<p>Build </p>
+<p>Run Controller class
 </p>
 <h3>Demo Snapshots</h3>
 <p>Home page when app is first opened</p>
