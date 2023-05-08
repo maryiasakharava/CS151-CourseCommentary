@@ -162,9 +162,7 @@ public class ReviewDisplayLoggedIn extends JFrame {
         //the topPanel is created to arrange the display table, header, and footer
         //header shows which search entry reviews are being shown
         topPanel.setBackground(c1.getColor());
-        JLabel courseName = new JLabel("Showing reviews for " + searchEntry);
-        courseName.setFont(f);
-        courseName.setForeground(c.getColor());
+        Header courseName = new Header("Showing reviews for " + searchEntry, Header.Color.TEAL);
         topPanel.add(courseName, BorderLayout.CENTER);
 
         //the bottom panel contains the statistics of the course; the average course rating and the percent of users who would take the class again

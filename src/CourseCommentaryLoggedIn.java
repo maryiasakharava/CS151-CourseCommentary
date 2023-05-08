@@ -10,9 +10,6 @@ import java.io.IOException;
 //the home page which is shown to registered users
 public class CourseCommentaryLoggedIn extends JFrame{
 
-        JButton login;
-        JButton signup;
-
         JColorChooser c, c1;
         Font f, f1;
         ImageIcon i, newIcon;
@@ -58,11 +55,14 @@ public class CourseCommentaryLoggedIn extends JFrame{
 
             JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             topPanel.setBackground(c.getColor());
+
             //write review and log out buttons
             JButton writeReviewButton = new JButton("Write Review");
             JButton logOut = new JButton("Log Out");
+            JButton close = new JButton("Close");
             topPanel.add(writeReviewButton);
             topPanel.add(logOut);
+            topPanel.add(close);
 
             add(topPanel, BorderLayout.NORTH);
 
@@ -88,6 +88,13 @@ public class CourseCommentaryLoggedIn extends JFrame{
                     c = new CourseCommentary();
                 }
             });
+
+            close.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e)
+                {
+                    dispose();
+                }
+            });
         }
 
 
@@ -98,10 +105,8 @@ public class CourseCommentaryLoggedIn extends JFrame{
             JPanel centerPanel = new JPanel(null);
             centerPanel.setBackground(c1.getColor());
             // Put a title next to search bar
-            JLabel titleLabel = new JLabel("Course Search");
+            Header titleLabel = new Header("Course Search", Header.Color.TEAL);
             titleLabel.setBounds(100, 50, 200, 25);
-            titleLabel.setFont(f);
-            titleLabel.setForeground(c.getColor());
 
             centerPanel.add(titleLabel);
             // Search bar created

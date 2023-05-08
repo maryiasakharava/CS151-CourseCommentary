@@ -9,3 +9,4 @@ CS 151:CS 151, Smith, Horrible class, 1, No, Yes
 CS 151:CS 151, Doe, Best class ever! The professor is super clear about the requirements., 10, Yes, Yes
 CS 151:CS 151, Doe, THe class is ok!, 6, Yes, Yes
 CS 100W:CS 100W, Joe Doe, This course teaches a lot about resumes. , 7, Yes, No
+CS 100w:CS 100w, John Jones, I would not take this course again. It had too much writing and the project is very hard. , 1, No, Yes

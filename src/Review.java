@@ -13,7 +13,8 @@ import java.util.HashMap;
 
 public class Review extends JFrame implements ActionListener  {
 
-  JLabel title, label, label2, label3, courseDIff, takeAgain, textbook;
+  Header title;
+  Label label, label2, label3, courseDIff, takeAgain, textbook;
 
 
   JTextField course;
@@ -141,9 +142,7 @@ public class Review extends JFrame implements ActionListener  {
   private void topPanel()
   {
     JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    title = new JLabel("Write Your Review");
-    title.setFont(f);
-    title.setForeground(c1.getColor());
+    title = new Header("Write Your Review", Header.Color.TAN);
     top.add(title);
     top.setBackground(c.getColor());
     top.setBounds(0, 0, this.getWidth(), 35);
@@ -160,22 +159,16 @@ public class Review extends JFrame implements ActionListener  {
     panel.setBackground(c1.getColor());
 
     //all user input text fields plus labels are included here
-    label = new JLabel("Course: ");
-    label.setFont(f1);
-    label.setForeground(c.getColor());
+    label = new Label("Course: ");
     label.setBounds(140, 70, 200, 30);
     panel.add(label);
 
-    label2 = new JLabel("Professor:  ");
-    label2.setFont(f1);
+    label2 = new Label("Professor:  ");
     label2.setBounds(140, 110, 200, 30);
-    label2.setForeground(c.getColor());
     panel.add(label2);
 
-    label3 = new JLabel("Review:  ");
-    label3.setFont(f1);
+    label3 = new Label("Review:  ");
     label3.setBounds(140, 270, 200, 30);
-    label3.setForeground(c.getColor());
     panel.add(label3);
 
     course = new JTextField(30);
@@ -190,22 +183,16 @@ public class Review extends JFrame implements ActionListener  {
 
 
     //These labels are for the features which are not text input
-    courseDIff = new JLabel("Course Difficulty:  ");
-    courseDIff.setFont(f1);
+    courseDIff = new Label("Course Difficulty:  ");
     courseDIff.setBounds(140, 150, 200, 30);
-    courseDIff.setForeground(c.getColor());
     panel.add(courseDIff);
 
-    takeAgain = new JLabel("Would take again:  ");
-    takeAgain.setFont(f1);
+    takeAgain = new Label("Would take again:  ");
     takeAgain.setBounds(140, 190, 200, 30);
-    takeAgain.setForeground(c.getColor());
     panel.add(takeAgain);
 
-    textbook = new JLabel("Textbooks required:  ");
-    textbook.setFont(f1);
+    textbook = new Label("Textbooks required:  ");
     textbook.setBounds(140, 230, 200, 30);
-    textbook.setForeground(c.getColor());
     panel.add(textbook);
 
     //the menu bar which is giving the rating on a scale of 1-10
@@ -351,7 +338,6 @@ public class Review extends JFrame implements ActionListener  {
       public void actionPerformed(ActionEvent e) {
         dispose();
         CourseCommentaryLoggedIn c = new CourseCommentaryLoggedIn();
-
       }
     });
 

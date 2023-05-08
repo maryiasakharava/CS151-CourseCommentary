@@ -120,7 +120,7 @@ public class ReviewDisplay extends JFrame {
         JPanel displayPanel = new JPanel(new BorderLayout());
         displayPanel.setBounds(0, 30, getWidth(), getHeight() - 15);
 
-        //default model which has six different columbs for the different aspects of the review
+        //default model which has six different columns for the different aspects of the review
         display = new JTable();
         DefaultTableModel model = (DefaultTableModel) display.getModel();
         model.addColumn("Course");
@@ -147,19 +147,13 @@ public class ReviewDisplay extends JFrame {
         //the topPanel is created to arrange the display table, header, and footer
         //header shows which search entry reviews are being shown
         topPanel.setBackground(c1.getColor());
-        JLabel courseName = new JLabel("Showing reviews for " + searchEntry);
-        courseName.setFont(f);
-        courseName.setForeground(c.getColor());
+        Header courseName = new Header("Showing reviews for " + searchEntry, Header.Color.TEAL);
         topPanel.add(courseName, BorderLayout.CENTER);
 
         //the bottom panel contains the statistics of the course; the average course rating and the percent of users who would take the class again
         JPanel stats = new JPanel(new FlowLayout());
-        JLabel averageRating = new JLabel("Rating: "+aveRating() + "   ");
-        JLabel takeAgain = new JLabel("Would take again: "+ percentTakeAgain()+"%");
-        averageRating.setFont(f);
-        averageRating.setForeground(c.getColor());
-        takeAgain.setFont(f);
-        takeAgain.setForeground(c.getColor());
+        Header averageRating = new Header("Rating: "+aveRating() + "   ", Header.Color.TEAL);
+        Header takeAgain = new Header("Would take again: "+ percentTakeAgain()+"%", Header.Color.TEAL);
         stats.add(averageRating);
         stats.setBackground(c1.getColor());
         stats.add(takeAgain);

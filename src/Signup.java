@@ -10,7 +10,8 @@ import javax.swing.*;
 
 //signup page which allows new users to sign up for an account
 public class Signup extends JFrame implements ActionListener {
-    JLabel label1, label2, label3, label4, label5;
+    Header label1;
+    Label label2, label3, label4, label5;
     JTextField field1, field2, field3;
     JButton signupButton;
     JPasswordField password;
@@ -226,9 +227,7 @@ public class Signup extends JFrame implements ActionListener {
     {
         JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
         top.setBackground(c.getColor());
-        label1 = new JLabel("Sign Up for an Account");
-        label1.setFont(f);
-        label1.setForeground(c1.getColor());
+        label1 = new Header("Sign Up for an Account", Header.Color.TAN);
         top.add(label1);
         top.setBounds(0, 0, this.getWidth(), 35);
         add(top);
@@ -242,21 +241,11 @@ public class Signup extends JFrame implements ActionListener {
         mid.setBounds(0, 30, this.getWidth(), this.getHeight()-30);
         mid.setLayout(null);
 
-        label2 = new JLabel("First Name: ");
-        label3 = new JLabel("Last Name: ");
-        label4 = new JLabel("Email: ");
-        label5 = new JLabel("Password:");
+        label2 = new Label("First Name: ");
+        label3 = new Label("Last Name: ");
+        label4 = new Label("Email: ");
+        label5 = new Label("Password:");
 
-        //setting the formatting for all the labels
-        label2.setFont(f1);
-        label3.setFont(f1);
-        label4.setFont(f1);
-        label5.setFont(f1);
-
-        label2.setForeground(c.getColor());
-        label3.setForeground(c.getColor());
-        label4.setForeground(c.getColor());
-        label5.setForeground(c.getColor());
 
         //creates the field for the first name, last name, the email, and password
         field1 = new JTextField();

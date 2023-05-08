@@ -7,7 +7,8 @@ import java.util.HashMap;
 
 //the Login page which will let users log in and provide an appropriate response to user being found or not found
 public class Login extends JFrame implements ActionListener {
-    JLabel l1, l2, l3;   //label for email and password
+    Header l1;
+    Label l2, l3;   //label for email and password
     JTextField tf1; // email field
     JButton btn1; // login button
     JPasswordField p1; // password field
@@ -96,9 +97,7 @@ public class Login extends JFrame implements ActionListener {
     private void topPanel()
     {
         JPanel top = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        l1 = new JLabel("Please Sign into your Account");
-        l1.setFont(f);
-        l1.setForeground(c1.getColor());
+        l1 = new Header("Please Sign into your Account", Header.Color.TAN);
         top.add(l1);
         top.setBackground(c.getColor());
         top.setBounds(0, 0, this.getWidth(), 35);
@@ -111,8 +110,8 @@ public class Login extends JFrame implements ActionListener {
         JPanel middlePanel = new JPanel(null);
         middlePanel.setBounds(0, 30, this.getWidth(), this.getHeight()-35);
         middlePanel.setBackground(c1.getColor());
-        l2 = new JLabel("Email:");
-        l3 = new JLabel("Password:");
+        l2 = new Label("Email:");
+        l3 = new Label("Password:");
         tf1 = new JTextField();
         p1 = new JPasswordField();
         btn1 = new JButton("Submit");
@@ -121,10 +120,6 @@ public class Login extends JFrame implements ActionListener {
         tf1.setBounds(360, 70, 200, 30);
         p1.setBounds(360, 110, 200, 30);
         btn1.setBounds(360, 160, 100, 30);
-        l2.setFont(f1);
-        l3.setFont(f1);
-        l2.setForeground(c.getColor());
-        l3.setForeground(c.getColor());
         middlePanel.add(l2);
         middlePanel.add(l3);
         middlePanel.add(tf1);

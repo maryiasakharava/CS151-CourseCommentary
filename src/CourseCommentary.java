@@ -15,12 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class CourseCommentary extends JFrame  {
-   // JFrame frame ;
-   // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    JButton login;
-    JButton signup;
-
-    JPanel topPanel;
     JColorChooser c, c1;
     ImageIcon i;
     ImageIcon newIcon;
@@ -75,15 +69,16 @@ public class CourseCommentary extends JFrame  {
 
         //create login and signup button which will be displayed at the top of the home page
         JButton loginButton = new JButton("Log In");
-        loginButton.setBackground(c1.getColor());
-
 
         JButton signupButton = new JButton("Sign Up");
-        signupButton.setBackground(c1.getColor());
+
+        JButton close = new JButton("Close");
+
 
         //arranging the buttons on the panel and setting
         loginSignupPanel.add(loginButton);
         loginSignupPanel.add(signupButton);
+        loginSignupPanel.add(close);
         add(loginSignupPanel, BorderLayout.NORTH);
 
         //redirect to the login page when login button clicked
@@ -106,7 +101,15 @@ public class CourseCommentary extends JFrame  {
                 }
             }
         });
+
+        close.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                dispose();
+            }
+        });
     }
+
 
     //creating the search panel which contains the search bar, search button, and the logo
     private void searchPanel()
@@ -114,10 +117,8 @@ public class CourseCommentary extends JFrame  {
         JPanel centerPanel = new JPanel(null);
         centerPanel.setBackground(c1.getColor());
         // Put a title next to search bar
-        JLabel titleLabel = new JLabel("Course Search");
+        Header titleLabel = new Header("Course Search", Header.Color.TEAL);
         titleLabel.setBounds(100, 50, 200, 25);
-        titleLabel.setFont(f1);
-        titleLabel.setForeground(c.getColor());
 
         centerPanel.add(titleLabel);
         // Search bar created
