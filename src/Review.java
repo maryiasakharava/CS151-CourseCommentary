@@ -36,7 +36,7 @@ public class Review extends JFrame implements ActionListener  {
   {
     setTitle("Write Review");
     setVisible(true);
-    setSize(800, 500);
+    setSize(800, 600);
     setLayout(null);
     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -183,7 +183,7 @@ public class Review extends JFrame implements ActionListener  {
 
 
     //These labels are for the features which are not text input
-    courseDIff = new Label("Course Difficulty:  ");
+    courseDIff = new Label("Course Rating:  ");
     courseDIff.setBounds(140, 150, 200, 30);
     panel.add(courseDIff);
 
@@ -319,7 +319,7 @@ public class Review extends JFrame implements ActionListener  {
 
     review = new JTextArea();
     review.setLineWrap(true);
-    review.setBounds(360, 270, 200, 100);
+    review.setBounds(360, 270, 400, 100);
     panel.add(review);
 
     //submit button and back button which submit the review(leading to the review being written into the reviews.txt file) and send us back to home page respectively
@@ -329,7 +329,7 @@ public class Review extends JFrame implements ActionListener  {
     panel.add(submit);
 
     JButton back = new JButton("Return to Home");
-    back.setBounds(50, 400, 150, 30);
+    back.setBounds(50, 500, 150, 30);
     panel.add(back);
 
     //back button which gets us back to home
@@ -347,3 +347,4 @@ public class Review extends JFrame implements ActionListener  {
 
 
 }
+
