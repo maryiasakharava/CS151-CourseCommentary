@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
@@ -18,6 +19,7 @@ public class Signup extends JFrame implements ActionListener {
 
     RegisteredUser user;
     HashMap<String, String> h;
+    ArrayList<String> usernames;
 
     JColorChooser c, c1;
     Font f, f1;
@@ -38,6 +40,8 @@ public class Signup extends JFrame implements ActionListener {
          f = new Font("DIALOG_INPUT", Font.PLAIN, 20);
          f1 = new Font(Font.DIALOG_INPUT, Font.PLAIN, 18);
 
+         usernames = new ArrayList<>();
+         ReadInFile("users.txt");
          setTitle("Create an Account");
 
          topPanel();
@@ -63,6 +67,15 @@ public class Signup extends JFrame implements ActionListener {
             boolean lC = false;
             boolean nC = false;
             boolean sC = false;
+
+            for(String u: usernames)
+            {
+                if(field3.getText().equals(u))
+                {
+                    JOptionPane.showMessageDialog(signupButton, "This email has already been registered. Try again!");
+                    return;
+                }
+            }
 
             for(char c: p)
             {
@@ -174,7 +187,23 @@ public class Signup extends JFrame implements ActionListener {
         }
     }
 
-    //the review needs to be written into the file
+    public void ReadInFile(String filepath)
+    {
+        //Read in the usernames which are stored in the users.txt file
+        try (BufferedReader br = new BufferedReader(new FileReader(filepath)))
+        {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] keyValue = line.split(":");
+                usernames.add(keyValue[0]);
+            }
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
+        }
+
+    }
+
+    //the user info needs to be written into the file
     public int readIntoFile() throws IOException {
 
         //load all the info which is entered into the HashMap into the txt file
